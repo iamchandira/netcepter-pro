@@ -63,11 +63,37 @@ You should see the **NetCepter Pro** extension in your extensions list with a bl
 
 ### Opening the NetCepter Pro Panel
 
-1. Open Chrome DevTools (F12 or Right-click → Inspect)
+NetCepter Pro can be accessed in two ways: **Standalone Window Mode** or **DevTools Mode**. Choose the mode that best fits your workflow.
+
+#### Option 1: Standalone Window Mode
+
+Perfect for multi-monitor setups or when you prefer a dedicated window:
+
+1. Click the **NetCepter Pro** extension icon in your Chrome toolbar
+2. The popup will open with two tabs: **Standalone Window** and **DevTools Mode**
+3. Click the **"Open as Standalone Window"** button
+4. NetCepter Pro will open in a new 1200x800px window
+5. Select the tab you want to intercept from the dropdown (if multiple tabs are open)
+
+**Benefits:**
+- Works independently of DevTools
+- Great for multi-monitor setups
+- Dedicated window for focused debugging
+- No need to open DevTools
+
+#### Option 2: DevTools Mode
+
+Traditional integration with Chrome DevTools:
+
+1. Open Chrome DevTools (Press `F12` or Right-click → **Inspect**)
 2. Look for the **NetCepter Pro** tab in the DevTools panel
 3. If you don't see it, click the `>>` button to find it in the overflow menu
+4. Click on the **NetCepter Pro** tab to start intercepting
 
-![DevTools Panel](https://i.imgur.com/placeholder-panel.png)
+**Benefits:**
+- Integrated with Chrome DevTools
+- Access alongside other DevTools panels
+- Familiar workflow for developers
 
 ### Basic Usage
 
@@ -218,95 +244,6 @@ The extension requires:
 - `storage`: To persist user settings
 - `tabs`: To access tab information
 
-## Troubleshooting
-
-### Extension Not Appearing
-
-**Problem**: NetCepter Pro tab doesn't show in DevTools
-
-**Solution**:
-- Refresh the page after installing the extension
-- Close and reopen DevTools
-- Check if the extension is enabled in `chrome://extensions/`
-- Look for "NetCepter Pro" in the DevTools tabs
-
-### Requests Not Being Intercepted
-
-**Problem**: Requests pass through without interception
-
-**Solution**:
-- Check if the Intercept toggle is ON (green)
-- Verify the debugger is attached (status should show "Connected")
-- Ensure filters aren't too restrictive
-- Try refreshing the page
-
-### Debugger Error
-
-**Problem**: "Failed to attach debugger" error
-
-**Solution**:
-- Only one debugger can attach at a time
-- Close other DevTools or debugging sessions
-- Click the **Reconnect** button (appears automatically when disconnected)
-- Refresh the page and try again
-- Check if another extension is using the debugger
-
-### Debugger Disconnected
-
-**Problem**: Status shows "Disconnected" and requests aren't being intercepted
-
-**Solution**:
-- Click the **Reconnect** button that appears next to the status indicator
-- The button will automatically show when the debugger is disconnected
-- If reconnection fails, try:
-  - Closing and reopening DevTools
-  - Reloading the extension at `chrome://extensions/`
-  - Refreshing the webpage
-
-### Cannot Edit Request/Response
-
-**Problem**: Input fields are disabled
-
-**Solution**:
-- This happens when a request is no longer paused
-- The request must be in PAUSED state to edit
-- Once you click Continue/Block, editing is disabled
-
-### Details Panel Not Showing When Clicking Request
-
-**Problem**: Nothing happens when clicking on a request in the list
-
-**Solution**:
-- On smaller screens (< 1024px), the details panel opens in overlay mode
-- Look for the close button (X) in the top-right of the details panel
-- On larger screens, details should appear in the right panel automatically
-- If still not working, try reloading the extension
-- Check browser console (F12) for any JavaScript errors
-
-### Missing Icons
-
-**Problem**: Icons not showing properly
-
-**Solution**:
-- Run `python generate_icons_simple.py` to regenerate icons
-- Ensure Pillow is installed: `pip install Pillow`
-- Reload the extension in `chrome://extensions/`
-
-## Development
-
-### Requirements
-
-- Python 3.x (for icon generation)
-- Pillow library: `pip install Pillow`
-
-### Building Icons
-
-```bash
-python generate_icons_simple.py
-```
-
-This generates three icon sizes: 16x16, 48x48, and 128x128 pixels.
-
 ### File Structure
 
 ```
@@ -323,17 +260,8 @@ netcepter-pro/
 │   ├── icon48.png
 │   ├── icon128.png
 │   └── icon.svg
-├── generate_icons_simple.py  # Icon generation script
 └── README.md             # This file
 ```
-
-### Modifying the Extension
-
-1. Make changes to the source files
-2. Go to `chrome://extensions/`
-3. Click the **Reload** button on the NetCepter Pro extension
-4. Refresh DevTools to see changes
-
 ## Security & Privacy
 
 ⚠️ **Important Security Notes:**
@@ -343,26 +271,6 @@ netcepter-pro/
 - Never use this extension for malicious purposes
 - The extension operates locally - no data is sent to external servers
 - Review code before installation if you have security concerns
-
-## Limitations
-
-- Only works with HTTP/HTTPS requests
-- Cannot intercept WebSocket traffic after initial handshake
-- One debugger attachment per tab (conflicts with other debugging tools)
-- Cannot intercept requests from other extensions
-- Service workers may have limited interception support
-
-## Comparison with Tamper Dev
-
-This extension is inspired by Tamper Dev but built from scratch with:
-
-- ✅ Modern UI with better UX
-- ✅ Clean, minimal design
-- ✅ Vanilla JavaScript (no framework overhead)
-- ✅ Dark mode support
-- ✅ Improved header editing interface
-- ✅ Better status indicators
-- ✅ More intuitive controls
 
 ## License
 
@@ -388,12 +296,7 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 
 ## Support
 
-If you encounter any issues or have questions:
-
-1. Check the Troubleshooting section above
-2. Review the extension console logs in DevTools
-3. Check Chrome's extension error logs at `chrome://extensions/`
-4. Open an issue on GitHub with detailed information
+If you encounter any issues or have questions: Open an issue on GitHub with detailed information
 
 ## Changelog
 
