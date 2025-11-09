@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "NetCepter Pro - HTTP Request Interceptor",
+  "short_name": "NetCepter Pro",
+  "version": "1.0.0",
+  "description": "Professional HTTP/HTTPS request and response interceptor for developers. Inspect, modify, and debug network traffic with ease.",
+  "author": "Chandira Ekanayaka",
+  "homepage_url": "https://iamchandira.com",
+  "permissions": [
+    "debugger",
+    "storage",
+    "tabs",
+    "windows"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "devtools_page": "devtools.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "NetCepter Pro",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["standalone.html", "standalone.js", "panel.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
+

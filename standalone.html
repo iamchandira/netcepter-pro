@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--
+  NetCepter Pro - Standalone Panel
+  © Copyright 2025 | Chandira Ekanayaka | https://iamchandira.com
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetCepter Pro - Standalone</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="title">
+          <img src="icons/icon48.png" alt="NetCepter Pro" class="logo-icon">
+          NetCepter Pro
+        </h1>
+        <div class="status-indicator" id="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Ready</span>
+        </div>
+        <button class="btn btn-primary" id="reconnect-btn" style="display: none;" title="Reconnect debugger">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+          Reconnect
+        </button>
+      </div>
+      
+      <div class="header-controls">
+        <button class="btn btn-secondary" id="select-tab-btn" title="Select tab to intercept">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 3v18"/>
+          </svg>
+          Select Tab
+        </button>
+        
+        <button class="btn btn-secondary" id="clear-btn" title="Clear all requests">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          </svg>
+          Clear
+        </button>
+        
+        <label class="toggle-switch" title="Enable/Disable Interception">
+          <input type="checkbox" id="intercept-toggle" checked>
+          <span class="toggle-slider"></span>
+          <span class="toggle-label">Intercept</span>
+        </label>
+      </div>
+    </header>
+
+    <!-- Tab Selection (shown when no tab is selected) -->
+    <div class="tab-selector" id="tab-selector" style="display: none;">
+      <div class="tab-selector-content">
+        <h2>Select a Tab to Intercept</h2>
+        <p>Choose which browser tab you want to intercept requests from:</p>
+        <div id="tabs-list" class="tabs-list"></div>
+        <button class="btn btn-primary" id="refresh-tabs-btn">Refresh Tabs</button>
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filters">
+      <div class="filter-group">
+        <input type="text" class="filter-input" id="url-filter" placeholder="Filter by URL pattern...">
+      </div>
+      
+      <div class="filter-group">
+        <select class="filter-select" id="method-filter">
+          <option value="">All Methods</option>
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
+          <option value="PATCH">PATCH</option>
+          <option value="OPTIONS">OPTIONS</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <select class="filter-select" id="type-filter">
+          <option value="">All Types</option>
+          <option value="document">Document</option>
+          <option value="xhr">XHR</option>
+          <option value="fetch">Fetch</option>
+          <option value="script">Script</option>
+          <option value="stylesheet">Stylesheet</option>
+          <option value="image">Image</option>
+          <option value="media">Media</option>
+          <option value="font">Font</option>
+          <option value="websocket">WebSocket</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Request List -->
+      <div class="request-list-container">
+        <div class="section-header">
+          <h2>Requests (<span id="request-count">0</span>)</h2>
+        </div>
+        
+        <div class="request-list" id="request-list">
+          <!-- Requests will be dynamically added here -->
+          <div class="empty-state" id="empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+            </svg>
+            <p>No requests intercepted yet</p>
+            <small>Select a tab and browse the web to see requests appear here</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Request Details -->
+      <div class="request-details-container" id="details-container">
+        <div class="section-header">
+          <h2>Request Details</h2>
+          <button class="btn btn-text" id="close-details">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="details-content" id="details-content">
+          <div class="empty-state">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M9 3v18M15 3v18"/>
+            </svg>
+            <p>Select a request to view details</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons (shown when request is paused) -->
+        <div class="action-buttons" id="action-buttons" style="display: none;">
+          <button class="btn btn-primary" id="continue-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            Continue
+          </button>
+          
+          <button class="btn btn-success" id="continue-modified-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Continue with Modifications
+          </button>
+          
+          <button class="btn btn-danger" id="block-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+            </svg>
+            Block Request
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="standalone.js"></script>
+</body>
+</html>
+

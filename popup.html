@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--
+  NetCepter Pro - Popup Guide
+  © Copyright 2025 | Chandira Ekanayaka | https://iamchandira.com
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetCepter Pro - Quick Guide</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 380px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      background-attachment: fixed;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(99, 102, 241, 0.03) 2px, rgba(99, 102, 241, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(59, 130, 246, 0.03) 2px, rgba(59, 130, 246, 0.03) 4px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .steps {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .step:last-child {
+      margin-bottom: 0;
+    }
+    
+    .step-number {
+      background: white;
+      color: #667eea;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-right: 12px;
+    }
+    
+    .step-content {
+      flex: 1;
+    }
+    
+    .step-content h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .step-content p {
+      font-size: 13px;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+    
+    .keyboard-hint {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    
+    .footer {
+      text-align: center;
+      padding-top: 15px;
+      border-top: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .footer p {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px solid rgba(99, 102, 241, 0.15);
+    }
+    
+    .copyright p {
+      font-size: 11px;
+      opacity: 0.7;
+      line-height: 1.4;
+    }
+    
+    .copyright a {
+      color: white;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+    
+    .copyright a:hover {
+      opacity: 1;
+    }
+    
+    .standalone-section {
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 15px;
+      border-top: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .btn-standalone {
+      width: 100%;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(59, 130, 246, 0.8) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
+      box-shadow: 
+        0 4px 12px rgba(99, 102, 241, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-standalone:hover {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
+      border-color: rgba(99, 102, 241, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 
+        0 6px 16px rgba(99, 102, 241, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-standalone:active {
+      transform: translateY(0);
+      box-shadow: 
+        0 2px 8px rgba(99, 102, 241, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .standalone-hint {
+      font-size: 11px;
+      opacity: 0.7;
+      margin: 0;
+    }
+    
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 10px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      box-shadow: 
+        0 4px 12px rgba(99, 102, 241, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    /* Tab Navigation */
+    .tabs-nav {
+      display: flex;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 15px;
+      gap: 4px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tab-btn {
+      flex: 1;
+      padding: 10px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .tab-btn:hover {
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(99, 102, 241, 0.15);
+    }
+    
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(59, 130, 246, 0.3) 100%);
+      color: white;
+      box-shadow: 
+        0 2px 8px rgba(99, 102, 241, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+    }
+    
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .standalone-info {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .standalone-info p {
+      font-size: 13px;
+      opacity: 0.9;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .standalone-info p:last-of-type {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="icon">
+      <img src="icons/icon48.png" alt="NetCepter Pro Icon">
+    </div>
+    <h1>NetCepter Pro</h1>
+    <p>HTTP Request Interceptor</p>
+  </div>
+  
+  <!-- Tab Navigation -->
+  <div class="tabs-nav">
+    <button class="tab-btn active" data-tab="standalone">Standalone Window</button>
+    <button class="tab-btn" data-tab="devtools">DevTools Mode</button>
+  </div>
+  
+  <!-- Standalone Window Tab -->
+  <div class="tab-content active" id="standalone-tab">
+    <div class="standalone-info">
+      <p>
+        <strong>Standalone Window Mode</strong> allows you to use NetCepter Pro in a separate window.
+        Perfect for multi-monitor setups or when you prefer a dedicated window.
+      </p>
+      <p>
+        Click the button below to open NetCepter Pro in a new window.
+      </p>
+    </div>
+    
+    <div class="standalone-section">
+      <button class="btn-standalone" id="open-standalone-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M8 3v18M16 3v18M3 8h18M3 16h18"/>
+        </svg>
+        Open as Standalone Window
+      </button>
+      <p class="standalone-hint">Opens in a new 1200x800px window</p>
+    </div>
+  </div>
+  
+  <!-- DevTools Mode Tab -->
+  <div class="tab-content" id="devtools-tab">
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Open DevTools</h3>
+          <p>
+            Press <span class="keyboard-hint">F12</span> or 
+            Right-click → <strong>Inspect</strong>
+          </p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Find NetCepter Pro Tab</h3>
+          <p>
+            Look for the <strong>"NetCepter Pro"</strong> tab in the DevTools panel. 
+            If you don't see it, click the <strong>»</strong> button to find it.
+          </p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Start Intercepting</h3>
+          <p>
+            Once the tab is open, navigate to any website and watch requests appear in real-time!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="copyright">
+    <p>
+      © Copyright 2025 | <a href="https://iamchandira.com" target="_blank">Chandira Ekanayaka</a>
+    </p>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
+
